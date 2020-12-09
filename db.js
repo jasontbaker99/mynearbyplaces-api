@@ -18,12 +18,14 @@ function allPlaces() {
 }
 
 function findByName(name) {
-    return postgrePool.query('select name,place,review from mynearbyplaces.places WHERE name LIKE \'%$1%\'',[name])
+    let n = '%'+name+'%';
+    return postgrePool.query('select name,place,review from mynearbyplaces.places WHERE name LIKE $1',[n])
     .then(result => result.rows);
 }
 
 function findByPlace(place) {
-    return postgrePool.query('select name,place,review from mynearbyplaces.places WHERE place LIKE \'%$1%\'',[place])
+    let p = '%'+place+'%';
+    return postgrePool.query('select name,place,review from mynearbyplaces.places WHERE place LIKE $1',[p])
     .then(result => result.rows);
 }
 
@@ -32,15 +34,15 @@ function addPlace(name,place,review) {
     .then(x => x.rows);
 }
 
-function addReview(name,review) {
-    let rev = String(','+review);
-    return postgrePool.query('UPDATE mynearbyplaces.places SET review=$2 WHERE name=$1 returning name', [name, rev])
-    .then(x => x.rows);
-}
+// function addReview(name,review) {
+//     let rev = String(','+review);
+//     return postgrePool.query('UPDATE mynearbyplaces.places SET review=$2 WHERE name=$1 returning name', [name, rev])
+//     .then(x => x.rows);
+// }
 
 function deletePlace(name) {
     return postgrePool.query('DELETE FROM mynearbyplaces.places WHERE name=$1 returning name', [name])
     .then(x => x.rows);
 }
 
-module.exports = {allPlaces, addPlace, deletePlace, findByName, findByPlace, addReview}
+module.exports = {allPlaces, addPlace, deletePlace, findByName, findByPlace}
