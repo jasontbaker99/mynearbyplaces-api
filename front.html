@@ -4,19 +4,18 @@
 <body>
     <div>Yo</div>
     <script>
-        let api = 'https://jasontbaker-myneabyplaces.herokuapp.com/';
+        let api = 'https://jasontbaker-myneabyplaces.herokuapp.com/allplaces';
         fetch(api).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
     
-        // api = "https://jasontbaker-imagequiz.herokuapp.com/score";
-        // //api = 'http://localhost:3000/score';
-        // let data = {id: 1, score: 3};
-        // fetch(api, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // }).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
+        api = "https://jasontbaker-imagequiz.herokuapp.com/addplace";
+        let data = {name: 'testname', place: 'testplace', review: 'testreview'};
+        fetch(api, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
     </script>
 </body>
 </head>

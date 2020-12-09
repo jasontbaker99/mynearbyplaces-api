@@ -1,11 +1,8 @@
 const express = require('express');
 var cors = require('cors');
-var data = require('./data');
 var bodyParser = require('body-parser');
-const { request } = require('express');
 const app = express();
 const db = require('./db');
-
 const port = process.env.PORT || 3000;
 
 
@@ -19,6 +16,13 @@ app.get('/', (request, response) => {
 
 app.get('/allplaces', (request, response) => {
     db.allPlaces().then(x => response.json(x));
+});
+
+app.post('/addplace', (request, response) => {
+    let name = request.body.name;
+    let place = request.body.place;
+    let review = request.body.review;
+    db.addPlace(name,place,review).then(x => response.json({message: 'Added place'}));
 });
 
 app.listen(port, () => {
