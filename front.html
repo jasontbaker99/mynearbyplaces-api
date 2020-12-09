@@ -4,11 +4,31 @@
 <body>
     <div>Yo</div>
     <script>
-        let api = 'https://jasontbaker-myneabyplaces.herokuapp.com/allplaces';
-        fetch(api).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
+        //let api = 'https://jasontbaker-myneabyplaces.herokuapp.com/allplaces';
+        //fetch(api).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
     
-        api = "https://jasontbaker-imagequiz.herokuapp.com/addplace";
-        let data = {name: 'testname', place: 'testplace', review: 'testreview'};
+        // let api = 'http://localhost:3000/addplace'//"https://jasontbaker-imagequiz.herokuapp.com/addplace";
+        // let data = {name: 'c', place: 'c', review: 'c'};
+        // fetch(api, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // }).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
+
+        // let api = 'http://localhost:3000/deleteplace'//"https://jasontbaker-imagequiz.herokuapp.com/addplace";
+        // let data = {name: 'c'};
+        // fetch(api, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(data)
+        // }).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
+
+        let api = 'http://localhost:3000/addreview'//"https://jasontbaker-imagequiz.herokuapp.com/addplace";
+        let data = {name: 'c', review: 'test'};
         fetch(api, {
             method: 'POST',
             headers: {
@@ -16,6 +36,7 @@
             },
             body: JSON.stringify(data)
         }).then(x => x.json()).then(y => console.log(y)).catch(e => console.log(e));
+
     </script>
 </body>
 </head>
